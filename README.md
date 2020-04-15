@@ -10,6 +10,8 @@
 
 Table of contens
 --------------------------------------------------------------------------------
+* [Covered APIs](#covered-apis)
+* [Features](#features)
 * [Installation](#installation)
 * [Usage examples](#usage-examples)
     * [REST API client](#rest-api-client)
@@ -17,6 +19,20 @@ Table of contens
     * [Dynamic subscriptions in runtime](#dynamic-subscriptions-in-runtime)
     * [Complete simple bot](#complete-simple-bot)
 * [TODO](#todo)
+
+
+Covered APIs
+--------------------------------------------------------------------------------
+* Tinkoff Investments ([official docs](https://tinkoffcreditsystems.github.io/invest-openapi/))
+
+
+Features
+--------------------------------------------------------------------------------
+* Clients for both [REST](https://tinkoffcreditsystems.github.io/invest-openapi/rest/) and [Streaming](https://tinkoffcreditsystems.github.io/invest-openapi/marketdata/) protocols in Tinkoff Investments
+* Presence of data classes for all interaction with API
+* Automatic reconnection and keep-alive connections
+* Internal exclusive rate limiter for every resource in REST protocol
+* Friendly exceptions for API errors
 
 
 Installation
@@ -62,7 +78,7 @@ async def jackpot():
                 token='TOKEN',
                 environment=Environment.SANDBOX) as client:
 
-            instruments = await client.market.instruments.search(ticker='AAPL')
+            instruments = await client.market.instruments.search('AAPL')
             apple = instruments[0]
 
             account = await client.sandbox.accounts.register()
